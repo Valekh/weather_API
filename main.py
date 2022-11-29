@@ -46,6 +46,6 @@ def update_average(date: str, new_value: str):
     average = round(mean(dates), 2)
     sqlite_module.update_average(date, str(average))
 
-
-sqlite_module.create_tables()
+# Создавать таблицы только в первый раз! Затем убрать строчку.
+# sqlite_module.create_tables()
 
