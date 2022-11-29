@@ -29,11 +29,14 @@ def get_weather():
 @app.get("/history")
 def get_history():
     averages = sqlite_module.get_history()
-    averages = dict(averages)
+    averages_temp = {}
+    for i in averages:
+        averages_temp.update({i[0]: {'temp': i[1]}})
+
     if len(averages) == 0:
         raise HTTPException(status_code=404, detail="No history")
     else:
-        return averages
+        return averages_temp
 
 
 def update_average(date: str, new_value: str):
